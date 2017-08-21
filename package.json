@@ -1,0 +1,19 @@
+{
+  "name": "liri-the-node-app",
+  "version": "1.0.0",
+  "description": "LIRI is the next big thing when it comes to SIRIs competition",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/colebearski/liri-node-app.git"
+  },
+  "author": "colebearski",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/colebearski/liri-node-app/issues"
+  },
+  "homepage": "https://github.com/colebearski/liri-node-app#readme"
+}
