@@ -59,45 +59,20 @@ client.get('statuses/user_timeline', params, function (error, tweets, response) 
 });
 }
 
-
-
-
-// global variables
-// twitter
-// my-tweets
-
-// spotify
-// spotify-this-song
-var artist = "";
-var songName = "";
-var link = "";
-var album = "";
-
-// movie
-// movie-this
-var title = ""
-var year = 0;
-var rating = 0;
-var plot = "";
-var actors = "";
-
-// do what it says
-var doThis = "";
-
-// what these commands do
-// this will show the last 20 tweets
-// and when they were created in terminal
-
-// store the following in variables
-// or just do the following below:
-
 /*
-At the top of the liri.js file, write the code you need to grab the data from keys.js. 
-Then store the keys in a variable.
-Make it so liri.js can take in one of the following commands:
+// spotify function
+function spotifyThis () {
+	var queryInput = "fade to black";
 
-my-tweets
-spotify-this-song
-movie-this
-do-what-it-says
+	spotify.search({ type: 'track', query: queryInput}, function (error, data) {
+		if (error) {
+			return console.log(error);
+		};
+	})
+
+	console.log("Artist: ")
+}
+
+search: function({ type: 'artist OR album OR track', query: 'My search query', limit: 20 }, callback);
 */
+
