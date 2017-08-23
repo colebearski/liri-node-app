@@ -1,10 +1,10 @@
-console.log('this is loaded');
+console.log('Twitter feed is loaded');
 
 // twitter keys
 
 exports.twitterKeys = {
-  consumer_key: 'BNJlBTCnmDVbvbQrrYVGm2yVG',
-  consumer_secret: 'l2gsA7ZySAmppr9ebpMk05R6dq39XTPchugw4k5XvbrToinZYh',
-  access_token_key: '<input here>',
-  access_token_secret: '<input here>',
+  consumer_key: 'hpXCpxsw8kspqtqsoB1sfdYgS',
+  consumer_secret: '9jXFR9tcNCNQA3A6f6AWAMeixMlVSJCu1U6HhXvUOK7mgwcZPN',
+  access_token_key: '899770179634081792-b5a9pBwodH8LzwhQq9orK0E7mfuNbcU',
+  access_token_secret: 'C8tbTstNm66RjrBjSyCQKbR0bCIlufCdfmGmAxdYP622X',
 };

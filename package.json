@@ -10,10 +10,21 @@
     "type": "git",
     "url": "git+https://github.com/colebearski/liri-node-app.git"
   },
+  "keywords": [
+    "OMDB",
+    "Spotify",
+    "Twitter"
+  ],
   "author": "colebearski",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/colebearski/liri-node-app/issues"
   },
-  "homepage": "https://github.com/colebearski/liri-node-app#readme"
+  "homepage": "https://github.com/colebearski/liri-node-app#readme",
+  "dependencies": {
+    "omdb": "^0.8.0",
+    "request": "^2.81.0",
+    "spotify": "^0.3.0",
+    "twitter": "^1.7.1"
+  }
 }
