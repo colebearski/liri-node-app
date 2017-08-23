@@ -35,25 +35,36 @@ switch (action) {
 }
 
 // the my tweets function
-function myTweets() {
+function myTweets () {
 
-	// read keys file
-	fs.readFile("keys.js", "utf8", function (error, data) {
-		if (error) {
-			return console.log(error);
-		}
+var client = new Twitter ({
+	consumer_key: keys.twitterKeys.consumer_key,
+	consumer_secret: keys.twitterKeys.consumer_secret,
+	access_token_key: keys.twitterKeys.access_token_key,
+	access_token_secret: keys.twitterKeys.access_token_secret
+});
 
-		// print tweets
-		console.log(data);
-	})
+var user = 'LiriAnderson';
+var params = {count: 20};
+
+client.get('statuses/user_timeline', params, function (error, tweets, response) {
+	if (!error) {
+		// need to include the following after .text + " Created on: " + tweets[i].created_at
+		for (var i = 0; i < tweets.length; i++) {
+			console.log(tweets[i].text);
+		};
+	}else{
+		console.log(error);
+	}
+});
 }
+
+
 
 
 // global variables
 // twitter
 // my-tweets
-var tweets = "";
-var username = "LiriAnderson";
 
 // spotify
 // spotify-this-song
@@ -73,25 +84,9 @@ var actors = "";
 // do what it says
 var doThis = "";
 
-// twitter
-if (instruct == "tweets") {
-	var twitterKeys = require("./keys.js");
-	var Twitter = require("twitter");
-};
-
-
-
-
-
 // what these commands do
 // this will show the last 20 tweets
 // and when they were created in terminal
-
-
-
-
-
-
 
 // store the following in variables
 // or just do the following below:
