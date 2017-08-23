@@ -2,14 +2,14 @@
 var nodeArg = process.argv;
 var action = process.argv[2];
 var instruct = process.argv[3];
-var num2 = process.argv[4];
-var num3 = process.argv[5];
+// var num2 = process.argv[4];
+// var num3 = process.argv[5];
 
 // requires
 var fs = require('fs');
 var request = require('request');
 var Twitter = require('twitter');
-var Spotify = require('spotify');
+var Spotify = require('node-spotify-api');
 var keys = require ('./keys.js');
 
 // switch case basically if/then from probank
@@ -59,20 +59,28 @@ client.get('statuses/user_timeline', params, function (error, tweets, response) 
 });
 }
 
-/*
-// spotify function
+// spotify
 function spotifyThis () {
-	var queryInput = "fade to black";
 
-	spotify.search({ type: 'track', query: queryInput}, function (error, data) {
-		if (error) {
-			return console.log(error);
-		};
-	})
+var spotify = new Spotify ({
+	id: keys.spotifyKeys.client_id,
+	secret: keys.spotifyKeys.client_secret
+});
 
-	console.log("Artist: ")
+var queryInput = "fade to black";
+if (instruct !== undefined) {
+	queryInput = instruct;
+};
+
+spotify.search({ type: 'track', query: queryInput}, function (error, data) {
+	if (error) {
+		return console.log(error);
+	};
+	console.log("Artist: " + data.tracks.items[0].artists[0].name);
+	console.log("Song Name: " + data.tracks.items[0].name);
+	console.log("Preview Link: " + data.tracks.items[0].external_urls.spotify);
+	console.log("Album: " + data.tracks.items[0].album.name);
+	// console.log(data);
+});
 }
-
-search: function({ type: 'artist OR album OR track', query: 'My search query', limit: 20 }, callback);
-*/
 
