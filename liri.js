@@ -2,6 +2,7 @@
 var nodeArg = process.argv;
 var action = process.argv[2];
 var instruct = process.argv[3];
+var perform = process.argv[4];
 // var num2 = process.argv[4];
 // var num3 = process.argv[5];
 
@@ -10,6 +11,7 @@ var fs = require('fs');
 var request = require('request');
 var Twitter = require('twitter');
 var Spotify = require('node-spotify-api');
+var omdbApi = require('omdb-client');
 var keys = require ('./keys.js');
 
 // switch case basically if/then from probank
@@ -60,6 +62,8 @@ client.get('statuses/user_timeline', params, function (error, tweets, response) 
 }
 
 // spotify
+// default is fade to black by metallica
+// sorry ace of base by someone....
 function spotifyThis () {
 
 var spotify = new Spotify ({
@@ -68,6 +72,7 @@ var spotify = new Spotify ({
 });
 
 var queryInput = "fade to black";
+
 if (instruct !== undefined) {
 	queryInput = instruct;
 };
@@ -83,4 +88,52 @@ spotify.search({ type: 'track', query: queryInput}, function (error, data) {
 	// console.log(data);
 });
 }
+
+// omdb 
+
+function movieThis (movie) {
+
+	var request = require('request');
+
+	var movie = "mr. nobody";
+
+	if (instruct !== undefined) {
+		movie = instruct;
+	};
+
+	var queryUrl = 'http://www.omdbapi.com/?t=' + movie + '&y=&plot=short&apikey=40e9cece';
+
+	request(queryUrl, function (error, response, body) {
+		if (error) {
+			return console.log('Error:', error);
+		};
+		console.log('--------------------');
+		console.log('Title:', JSON.parse(body).Title);
+		console.log('Year:', JSON.parse(body).Year);
+		console.log('IMDB Rating:', JSON.parse(body).imdbRating);
+		console.log('Rotten Tomatoes:', JSON.parse(body).tomatoRating);
+		console.log('Country:', JSON.parse(body).Country);
+		console.log('Language:', JSON.parse(body).Language);
+		console.log('Plot:', JSON.parse(body).Plot);
+		console.log('Actors:', JSON.parse(body).Actors);	
+		console.log('--------------------');
+	})
+
+}
+// still need to setup defaul search
+// parse int not working with tomato rating
+
+function doWhatItSays () {
+
+	var fs = require('fs');
+
+	fs.readFile('random.txt', 'utf8', function (error, data) {
+
+		console.log(data);
+	})
+
+}
+
+
+
 
